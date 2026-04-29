@@ -177,7 +177,7 @@ def main() -> None:
     
     # Start the Bot
     logger.info("🚀 Telegram Bot starting...")
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+    asyncio.run(application.run_polling(allowed_updates=Update.ALL_TYPES))
 
 
 if __name__ == '__main__':
