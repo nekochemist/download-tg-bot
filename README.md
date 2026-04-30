@@ -1,21 +1,23 @@
 # XInstDL
 
-A fast and elegant Telegram bot for downloading media from X (Twitter) and Instagram(or more). Simply send a link and get the video delivered straight to your Telegram chat!
+A fast and elegant Telegram bot for downloading media from multiple platforms. Simply send a link and get the video delivered straight to your Telegram chat!
 
 ## Features
 
-- **Multi-platform support**: Download from X (Twitter) and Instagram (and more)
-- **Fast downloads**: Powered by `ytdlp-nodejs` for efficient media extraction
+- **Multi-platform support**: Download from YouTube, Instagram, X (Twitter), TikTok, Facebook, and [many more platforms](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)
+- **Fast downloads**: Powered by `yt-dlp` for efficient media extraction
 - **Easy to use**: Just send a link to the bot
 - **Clean**: Automatically cleans up temporary files after upload
 - **Rich metadata**: Includes video titles in the response
 - **Error handling**: Graceful handling of private, invalid, or unsupported links
+- **File size check**: Warns if video exceeds Telegram's 50MB limit
 
 ## Quick Start
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Python 3.8 or higher
+- ffmpeg (for video processing)
 - A Telegram Bot Token (get one from [@BotFather](https://t.me/botfather))
 
 ### Installation
@@ -30,7 +32,7 @@ cd xinstdl
 2. Install dependencies:
 
 ```bash
-npm install
+pip install -r requirements.txt
 ```
 
 3. Set up environment variables:
@@ -44,27 +46,44 @@ BOT_TOKEN=your_telegram_bot_token_here
 4. Start the bot:
 
 ```bash
-npm start
+python bot.py
+```
+
+### Docker Deployment
+
+Alternatively, you can run the bot using Docker:
+
+```bash
+docker build -t xinstdl .
+docker run -e BOT_TOKEN=your_telegram_bot_token_here xinstdl
 ```
 
 ## Usage
 
 1. Start a chat with your bot on Telegram
-2. Send any Instagram or X (Twitter) link
+2. Send any supported platform link (YouTube, Instagram, X/Twitter, TikTok, etc.)
 3. Wait for the bot to process and download the media
 4. Receive the video directly in your chat!
 
 ### Supported Platforms
 
-- **Instagram**: Posts, Reels, IGTV
+This bot uses yt-dlp, which supports **1800+ sites**, including:
+
+- **YouTube**: Videos, Shorts, Playlists
+- **Instagram**: Posts, Reels, Stories, IGTV
 - **X (Twitter)**: Tweets with videos
-- [all ytdlp platforms](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)
+- **TikTok**: Videos
+- **Facebook**: Public videos
+- **Vimeo**: Videos
+- **Dailymotion**: Videos
+- **Reddit**: Videos
+- And many more! See the full list at [yt-dlp supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)
 
 ### Dependencies
 
-- [**telegraf**](https://github.com/telegraf/telegraf): Modern Telegram Bot API framework
-- [**ytdlp-nodejs**](https://github.com/iqbal-rashed/ytdlp-nodejs): Node.js wrapper for yt-dlp
-- **dotenv**: Environment variable management
+- [**python-telegram-bot**](https://github.com/python-telegram-bot/python-telegram-bot): Modern Telegram Bot API framework
+- [**yt-dlp**](https://github.com/yt-dlp/yt-dlp): Feature-rich command-line program to download videos
+- **ffmpeg**: For video processing and format conversion
 
 ## Contributing
 
@@ -76,7 +95,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Disclaimer
 
-This bot is for educational and personal use only. Please respect the terms of service of Instagram and X (Twitter) when using this tool. The authors are not responsible for any misuse of this software.
+This bot is for educational and personal use only. Please respect the terms of service of the platforms when using this tool. The authors are not responsible for any misuse of this software.
 
 ## Demo
 
