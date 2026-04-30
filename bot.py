@@ -167,7 +167,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                 logger.error(f"Error cleaning up file: {cleanup_err}")
 
 
-async def main() -> None:
+def main() -> None:
     """Start the bot."""
     # Create the Application
     application = Application.builder().token(BOT_TOKEN).build()
@@ -177,8 +177,8 @@ async def main() -> None:
     
     # Start the Bot
     logger.info("🚀 Telegram Bot starting...")
-    await application.run_polling(allowed_updates=Update.ALL_TYPES)
+    application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    main()
